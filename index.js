@@ -2,13 +2,16 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// My Details 
-const FULL_NAME = "AkhilThirunalveli";  
-const DOB = "05092004";       // format: ddmmyyyy
-const EMAIL = "thirunalveliakhilbhaskar@vitbhopal.ac.in";
-const ROLL_NUMBER = "22BET10003";
 
-//
+
+
+// My Details 
+const FULL_NAME = "akhil_thirunalveli";  
+const DOB = "05092004";
+const EMAIL = "thirunalveliakhilbhaskar@vitbhopal.ac.in";
+const ROLL_NUMBER = "22bet10003";
+
+
 function alternatingCapsReverse(str) {
   let reversed = str.split("").reverse().join("");
   return reversed
@@ -16,6 +19,7 @@ function alternatingCapsReverse(str) {
     .map((ch, idx) => (idx % 2 === 0 ? ch.toUpperCase() : ch.toLowerCase()))
     .join("");
 }
+
 
 app.post("/bfhl", (req, res) => {
   try {
@@ -27,6 +31,7 @@ app.post("/bfhl", (req, res) => {
     let specials = [];
     let sum = 0;
     let allAlphabets = [];
+
 
     for (let item of inputArray) {
       if (!isNaN(item) && item.trim() !== "") {
@@ -47,6 +52,7 @@ app.post("/bfhl", (req, res) => {
       }
     }
 
+
     const concatString = alternatingCapsReverse(allAlphabets.join(""));
 
     return res.status(200).json({
@@ -66,7 +72,7 @@ app.post("/bfhl", (req, res) => {
   }
 });
 
-// For local dev
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
